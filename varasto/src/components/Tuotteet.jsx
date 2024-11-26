@@ -9,7 +9,7 @@ const Tuotteet = () => {
   const [valittuValmistaja, setValittuValmistaja] = useState(''); 
 
   useEffect(() => {
-    fetch('https://syntaxbackend-f811444e58ce.herokuapp.com/api/tuotes')
+    fetch(process.env.REACT_APP_API_PRODUCTS_URL)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Verkkovastaus ei ollut kunnossa');
