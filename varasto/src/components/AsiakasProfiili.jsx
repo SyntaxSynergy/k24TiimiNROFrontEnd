@@ -1,9 +1,12 @@
 function AsiakasProfiili() {
-//TYÖNALLA ODOTTAA LOG IN SIVUA
+
     return (
       <div>
-        <h1>AsiakasProfiili</h1>
-        <p>Tervetuloa!</p>
+        <h1>Asiakasprofiili</h1>
+        <hr />
+        <h2>Haluatko poistaa tilisi?</h2>
+        <p>Ota yhteyttä asiakaspalveluumme. Me autamme mielellämme!</p>
+        <a href="mailto:esimerkki@sahkopositi.com">esimerkki@sahkopositi.com</a> 
       </div>
     );
   }
