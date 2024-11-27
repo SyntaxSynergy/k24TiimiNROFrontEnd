@@ -1,4 +1,3 @@
-import Tuotteet from "./Tuotteet";
 function Etusivu() {
     return (
       <div>
