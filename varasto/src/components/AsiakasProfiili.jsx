@@ -6,7 +6,7 @@ function AsiakasProfiili() {
         <hr />
         <h2>Haluatko poistaa tilisi?</h2>
         <p>Ota yhteyttä asiakaspalveluumme. Me autamme mielellämme!</p>
-        <a href="mailto:esimerkki@sahkopositi.com">esimerkki@sahkopositi.com</a> 
+        <a href="mailto:asiakaspalvelu@lemmikkitarvike.fi">asiakaspalvelu@lemmikkitarvike.fi</a> 
       </div>
     );
   }
