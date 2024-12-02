@@ -2,7 +2,7 @@
   "name": "varasto",
   "private": true,
   "version": "0.0.0",
-   "homepage": "https://syntaxsynergy.github.io/k24TiimiNROFrontEnd/",
+  "homepage": "https://syntaxsynergy.github.io/k24TiimiNROFrontEnd/",
   "type": "module",
   "scripts": {
     "dev": "vite",
