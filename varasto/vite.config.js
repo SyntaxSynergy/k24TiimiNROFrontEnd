@@ -6,9 +6,8 @@ dotenv.config();
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/k24TiimiNROFrontEnd/',
   plugins: [react()],
   define: {
     'process.env': process.env
-  },
+  },base: "/k24TiimiNROFrontEnd/"
 })
