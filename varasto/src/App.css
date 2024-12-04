@@ -1,55 +1,172 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column; 
+  justify-content: flex-start;
+  font-family: 'Inter', Arial, sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  background-color: rgb(96, 161, 199);
+  flex: 1;
+  display: flex; 
+  flex-direction: column;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+main {
+  flex: 1; 
+}
+/* NAVBAR */
+
+.navbar.custom-navbar {
+  background-color: rgb(96, 161, 199) !important; 
+  box-shadow: 0 2px 10px rgba(55, 85, 137, 0.3); 
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.navLogo{
+  max-width: 13rem;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+.nav-link.text{
+  color: aliceblue;
+  font-weight: 500;
+ 
+}
+.material-symbols-outlined.user{
+  color: aliceblue;
+
 }
 
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* ETUSIVU */
+.carousel{
+  box-shadow: 0 4px 8px rgba(89, 152, 183, 0.839); 
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-a {
-  margin: 20px;
-}
-
-nav {
+.etusivu-container{
   display: flex;
   justify-content: center;
-  background-color: rgb(46, 46, 46);
+  align-items: center;
+  flex-direction: column;
+  margin-left: 16vw;
+  margin-right: 16vw;
+  margin-top: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+
 }
+.etusivu-h1{
+  color:  rgb(255, 255, 255);
+  font-weight: 800;
+}
+.etusivu-p{
+  color:  rgb(255, 255, 255);
+  font-size: 1.3em;
+}
+.material-symbols-outlined.tassu-etusivu{
+  color: rgb(255, 255, 255);
+  font-size: 4rem;
+}
+.tuotteet-button {
+  display: inline-block;     
+  background-color: #ffffff;  
+  box-shadow: 0 4px 8px rgba(53, 139, 182, 0.839); 
+  color: rgb(63, 151, 196);  
+  border-radius: 1rem;       
+  padding: 12px 32px;        
+  text-align: center;       
+  text-decoration: none;     
+  font-weight: 800;           
+  transition: background-color 0.3s ease, transform 0.3s ease; 
+}
+
+.tuotteet-button:hover {
+  background-color: rgb(41, 117, 155);  
+  color: white;                      
+  transform: scale(1.05);                
+}
+
+
+/* MEISTA*/
+/* REGISTER */
+/* TUOTTEET */
+
+
+/*FOOTER*/
+.footer {
+  background-color: rgb(239, 239, 239);
+  box-shadow: 0 10px 30px rgb(43, 63, 98);
+  padding: 6px 0;
+  width: 100%;
+  text-align: center;
+  z-index: 100;
+  position: relative; 
+  bottom: 0;
+
+}
+
+
+.footer-text {
+  color: rgb(70, 127, 160);
+  margin: 0;
+}
+
+
+.footer-link {
+  color: #333;
+  text-decoration: none;
+  font-size: 16px;
+}
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    position: fixed; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 0;
+  }
+
+  .etusivu-container{
+ 
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 1rem;
+
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+  
+  
+  
+  }
+  .etusivu-p{
+    font-size: 1.3em;
+  }
+}
+
+@media (min-width: 769px) {
+
+  .footer {
+    position: relative; 
+    margin-top: auto;
+  }
+
+}
+
+
