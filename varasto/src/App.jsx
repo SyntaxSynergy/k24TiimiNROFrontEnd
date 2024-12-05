@@ -44,7 +44,7 @@ function App() {
                 <Link className="nav-link text" to="/Register">Register</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/AsiakasProfiili"><span className="material-symbols-outlined user">account_circle</span></Link>
+                <Link className="nav-link text" to="/AsiakasProfiili"><span className="material-symbols-outlined user">account_circle</span></Link>
 
               </li>
             </ul>

@@ -13,6 +13,9 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.5",
+    "@emotion/styled": "^11.13.5",
+    "@mui/material": "^6.1.10",
     "antd": "^5.22.3",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.3.3",

@@ -37,12 +37,13 @@ function Register() {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
+    <div className='register-container'>
+      <h1 className='h1-heading'>Luo tili</h1>
+      <div className='register-bg-container'>
       <form onSubmit={handleSubmit}>
 
         <div>
-          <label>Username:</label>
+          <label>Etunimi:</label>
           <input
             type="etunimi"
             value={etunimi}
@@ -63,6 +64,7 @@ function Register() {
 
         <button type="submit">Register</button>
       </form>
+      </div>
     </div>
   );
 }
