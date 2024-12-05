@@ -38,8 +38,8 @@ main {
 }
 
 .navLogo{
-  max-width: 13rem;
-  padding-right: 8px;
+  max-width:13rem;
+  padding-right: 10px;
   padding-left: 8px;
 }
 .nav-link.text{

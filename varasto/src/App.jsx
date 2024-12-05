@@ -44,7 +44,7 @@ function App() {
                 <Link className="nav-link text" to="/Register">Register</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/AsiakasProfiili"><span class="material-symbols-outlined user">account_circle</span></Link>
+                <Link className="nav-link" to="/AsiakasProfiili"><span className="material-symbols-outlined user">account_circle</span></Link>
 
               </li>
             </ul>
@@ -54,12 +54,12 @@ function App() {
 
 
       <Routes>
-        <Route path="/" element={<Etusivu />} />
+        <Route path="/k24TiimiNROFrontEnd/" element={<Etusivu />} />
         <Route path="tuotteet" element={<Tuotteet />} />
         <Route path="meista" element={<Meista />} />
         <Route path="register" element={<Register />} />
         <Route path="AsiakasProfiili" element={<AsiakasProfiili />} />
-        <Route path="etusivu" element={<Etusivu />} />
+        <Route path="/" element={<Etusivu />} />
       </Routes>
       <footer className="footer">
       <p className='footer-text'>Omppu & Rane oy 2024</p>

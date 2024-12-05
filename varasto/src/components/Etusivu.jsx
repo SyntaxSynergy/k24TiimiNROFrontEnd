@@ -56,7 +56,7 @@ function Etusivu() {
       </Carousel>
 
       <div className="etusivu-container">
-        <span class="material-symbols-outlined tassu-etusivu">pets</span>
+        <span className="material-symbols-outlined tassu-etusivu">pets</span>
         <h1 className='etusivu-h1'>Tutustu tuotteisiimme</h1>
         <p className='etusivu-p'>Meiltä löydät laajan valikoiman korkealaatuisia tuotteita, jotka tukevat lemmikkisi hyvinvointia ja elämänlaatua. Tarjoamme ruokia, tarvikkeita ja lisävarusteita kaikille lemmikeille – koirista kissoihin ja pieneläimiin.</p>
         <a className="tuotteet-button" href="/Tuotteet">tuotteet</a>
