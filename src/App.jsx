@@ -8,9 +8,9 @@ import AsiakasProfiili from './components/AsiakasProfiili';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/k24TiimiNROFrontEnd">
       <nav>
-        <Link to="/">Etusivu</Link>
+        <Link to="/Etusivu">Etusivu</Link>
         <Link to="/Meista">Meistä</Link>
         <Link to="/Tuotteet">Tuotteet</Link>
         <Link to="/Register">Register</Link>
