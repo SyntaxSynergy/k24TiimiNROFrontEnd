@@ -3,7 +3,6 @@ import Etusivu from './components/Etusivu';
 import Tuotteet from './components/Tuotteet';
 import './App.css';
 import Meista from './components/Meista';
-import Register from './components/Register';
 import AsiakasProfiili from './components/AsiakasProfiili';
 
 function App() {
