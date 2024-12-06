@@ -13,14 +13,12 @@ function App() {
         <Link to="/Etusivu">Etusivu</Link>
         <Link to="/Meista">Meistä</Link>
         <Link to="/Tuotteet">Tuotteet</Link>
-        <Link to="/Register">Register</Link>
         <Link to="/AsiakasProfiili">Asiakasprofiili</Link>
       </nav>
       <Routes>
         <Route path="/" element={<Etusivu />} />
         <Route path="tuotteet" element={<Tuotteet />} />
         <Route path="meista" element={<Meista />} />
-        <Route path="register" element={<Register />} />
         <Route path="AsiakasProfiili" element={<AsiakasProfiili />} />
         <Route path="etusivu" element={<Etusivu />} />
       </Routes>
