@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';  // Importing the Button
 import Typography from '@mui/material/Typography';  // Importing Typography
-
+import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 const tyyppiIcons = {
   VAATE: 'checkroom',
   LELU: 'sports_volleyball',
@@ -125,46 +125,108 @@ const Tuotteet = () => {
 
   return (
     <div className="catalog-container">
-      <h1>Tuotteet</h1>
+      <div className='tuotteet-header'>
+      <h1 className='h1-heading'>Tuotteet <span class="material-symbols-outlined tassu">
+pets
+</span></h1>
 
-      <div className="filter-container">
-        <label>Valitse valmistaja: </label>
-        <select value={valittuValmistaja} onChange={handleValmistajaMuutos}>
-          <option value="">Kaikki valmistajat</option>
-          {valmistajat.map((valmistaja, index) => (
-            <option key={index} value={valmistaja}>
-              {valmistaja}
-            </option>
-          ))}
-        </select>
+      <FormControl 
+    sx={{
+      width: '20vw', 
+      borderRadius: '8px', 
+      '& .MuiInputLabel-root': { color: 'white' },
+      '& .MuiOutlinedInput-root': {
+
+        '& fieldset': {
+          borderColor: 'white', 
+        },
+        '&:hover fieldset': {
+          borderColor: 'white', 
+        },
+        '&.Mui-focused fieldset': {
+          borderColor: 'white', 
+        },
+      },
+      '& .MuiMenuItem-root': {
+        '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.2)', color: 'white' }, 
+      },
+ 
+      '@media (max-width: 600px)': {
+        width: '70vw', 
+      },
+    }}
+  
+      >
+      <InputLabel id="valmistaja-select-label">Valitse valmistaja</InputLabel>
+      <Select
+        labelId="valmistaja-select-label"
+        id="valmistaja-select"
+        value={valittuValmistaja}
+        onChange={handleValmistajaMuutos}
+        label="Valitse valmistaja"
+      >
+  
+        <MenuItem value="">
+          <em>Kaikki valmistajat</em>
+        </MenuItem>
+
+        {valmistajat.map((valmistaja, index) => (
+          <MenuItem key={index} value={valmistaja}>
+            {valmistaja}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+        
       </div>
+      
 
+<div className='grid-bg'>
       <div className="products-grid">
-        {tuotteet.length === 0 ? (
-          <p>Ei tuotteita löytynyt.</p>
-        ) : (
-          tuotteet.map((tuote) => (
-            <div className="product-card" key={tuote._links.self.href}>
-               <Button onClick={() => handleOpen(tuote)}>
-                <span class="material-symbols-outlined">info</span>
-                </Button>
-              <div className="icon-container">
-              <span
-                  className="material-symbols-outlined product-icon"
-                  style={{ fontSize: '4rem', color: tyyppiColors[tuote.tyyppiNimi] || '#555' }}
-                >
-                  {tyyppiIcons[tuote.tyyppiNimi] || 'help_outline'}
-                </span>
-              </div>
-              <div className="product-info">
-                <h3>{tuote.nimi}</h3>
-                <p>Hinta: {tuote.hinta} €</p>
-               
-              </div>
-            </div>
-          ))
-        )}
+  {tuotteet.length === 0 ? (
+    <p>Ei tuotteita löytynyt.</p>
+  ) : (
+    tuotteet.map((tuote) => (
+      <div className="product-card" key={tuote._links.self.href}>
+    
+       
+        
+        <div className="icon-container">
+          <span
+            className="material-symbols-outlined product-icon"
+            style={{ fontSize: '5rem', color: tyyppiColors[tuote.tyyppiNimi] || '#555' }}
+          >
+            {tyyppiIcons[tuote.tyyppiNimi] || 'help_outline'}
+          </span>
+        </div>
+        
+        <div className="product-info">
+         
+        <div className='product-header'> <p>{tuote.nimi}</p>
+       
+        <Button className="info-button" onClick={() => handleOpen(tuote)}>
+          <span className="material-symbols-outlined info">info</span>
+        </Button>
+        </div>
+
+     <hr className='tuote-divider-hr'/>
+          <div className="google-shopping-banner">
+          <p className='hinta'> {tuote.hinta} €</p>
+          <div className='hinta-osta'>
+          <span className="material-symbols-outlined shopping" >
+              shopping_cart
+            </span>
+            <p>Osta tuote</p>
+          </div>
+            
+          </div>
+        </div>
       </div>
+    ))
+  )}
+  </div>
+</div>
+
 
  
       <Modal
@@ -174,7 +236,7 @@ const Tuotteet = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <Typography id="modal-modal-title" variant="h7" component="h2">
             {selectedProduct ? selectedProduct.nimi : 'Loading...'}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
