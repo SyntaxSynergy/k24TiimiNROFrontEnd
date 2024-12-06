@@ -90,8 +90,8 @@ const Tuotteet = () => {
 
   //funktio asiakkaan ja tuotteen id:n erottamiseen urli:sta
   const extractIdFromUrl = (url) => {
-    const match = url.match(/\/(\d+)$/);
-    return match ? match[1] : null;
+    const segments = url.split('/');
+    return segments.length > 0 ? segments[segments.length - 1] : null;
   };
 
   // funktio tilauksen ja asiakkaan tallentamiseen taulukoihin. Uuttaa asiakasta ei tallenneta, jos identtinen asiakas on jo olemassa.
