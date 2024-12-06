@@ -157,14 +157,101 @@ h3 {
 }
 
 /* REGISTER */
-.register-bg-container {
+.register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  flex-direction: column;
+}
+
+.register-heading {
+  font-size: 2.5rem;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-align: center;
+ 
+}
+
+.register-container {
   background-color: #ffffff;
-  padding: 8vw;
-  margin: 4vh;
-  border-radius: 1rem;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+
+}
+
+.register-form {
+  
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-group label {
+  font-size: 1rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.input-group input {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+background-color: #d9edf5;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #1e5777;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.register-btn {
+  background-color: rgb(96, 161, 199);;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.register-btn:hover {
+  background-color: #164f64;
+  transform: scale(1.05);
+}
+
+.register-btn:active {
+  background-color: #143c4f;
 }
 
 /* TUOTTEET */
+.bg {
+  background-image: url('./assets/kuvat/taustakuva.jpg');
+  background-size:cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-attachment: fixed;
+}
 
 .tuotteet-header {
   display: flex;
@@ -184,6 +271,7 @@ h3 {
 }
 
 .catalog-container {
+  
   display: flex;
   margin-top: 9vh;
   margin-left: 20rem;
@@ -360,21 +448,7 @@ button.info-button {
 /* MOBILE*/
 
 
-@media (max-width: 1500px) {
 
-  .tuotteet-header {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    width: 100vw;
-    align-items: center;
-    justify-content: center;
-
-    gap: 40vw;
-
-
-  }
-}
 
 
 @media (max-width: 1164px) {
@@ -382,23 +456,13 @@ button.info-button {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .tuotteet-header {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    width: 100vw;
-    align-items: center;
-    justify-content: center;
 
-    gap: 30vw;
-
-
-  }
 }
 
 @media (max-width: 768px) {
   .products-grid {
     grid-template-columns: 1fr;
+    
   }
 
   .catalog-container {

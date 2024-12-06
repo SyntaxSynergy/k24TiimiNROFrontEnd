@@ -37,34 +37,39 @@ function Register() {
   };
 
   return (
-    <div className='register-container'>
-      <h1 className='h1-heading'>Luo tili</h1>
-      <div className='register-bg-container'>
-      <form onSubmit={handleSubmit}>
+    <div className="bg">
+    <div className='register-page'>
+      <h1 className='register-heading'>Luo tili</h1>
+      <div className='register-container'>
+        <form onSubmit={handleSubmit} className='register-form'>
+          <div className='input-group'>
+            <label>Etunimi:</label>
+            <input
+              type="text"
+              value={etunimi}
+              onChange={(e) => setEtunimi(e.target.value)}
+              placeholder="Anna etunimesi"
+              required
+            />
+          </div>
 
-        <div>
-          <label>Etunimi:</label>
-          <input
-            type="etunimi"
-            value={etunimi}
-            onChange={(e) => setEtunimi(e.target.value)}
-            required
-          />
-        </div>
+          <div className='input-group'>
+            <label>Sukunimi:</label>
+            <input
+              type="text"
+              value={sukunimi}
+              onChange={(e) => setSukunimi(e.target.value)}
+              placeholder="Anna sukunimesi"
+              required
+            />
+          </div>
 
-        <div>
-          <label>Sukunimi:</label>
-          <input
-            type="sukunimi"
-            value={sukunimi}
-            onChange={(e) => setSukunimi(e.target.value)}
-            required
-          />
-        </div>
-
-        <button type="submit">Register</button>
-      </form>
+          <div className='form-footer'>
+            <button type="submit" className='register-btn'>Luo tili</button>
+          </div>
+        </form>
       </div>
+    </div>
     </div>
   );
 }
