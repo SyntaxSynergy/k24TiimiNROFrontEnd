@@ -5,19 +5,13 @@ function Meista() {
   return (
     <div className="bg">
       <div className="meista-container">
-
-
         <div className="meista-container-bg">
-
           <img
             src={koirakuva}
             alt="Koira"
             className='heading-image'
           />
-
           <div className="intro-section">
-
-
             <div className="intro-text">
               <h1 className="meista-heading2">Omppu & ranen tarina</h1>
               <p>
@@ -48,16 +42,13 @@ function Meista() {
             <p>
               Y-tunnus: 1234567-8
             </p>
-
             <p>
               Jos sinulla on kysyttävää, palautetta tai tarvitset apua tilauksesi kanssa, älä epäröi ottaa meihin yhteyttä!
             </p>
-
             <p>
               Sähköposti: <a href="mailto:asiakaspalvelu@lemmikkitarvike.fi" className="email-link">asiakaspalvelu@lemmikkitarvike.fi</a><br />
               Puhelin: 040-1234567
             </p>
-
             <p>
               Kiitos, että valitsit Lemmikkitarvikeverkkokaupan – yhdessä teemme lemmikkien elämästä parempaa! 🐾
             </p>

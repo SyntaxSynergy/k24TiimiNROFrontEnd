@@ -26,7 +26,12 @@ const Tuotteet = () => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true); 
 
+  useEffect(() => {
+    // Scroll to top when this component is mounted
+    window.scrollTo(0, 0);
+  }, []);
 
+  
   //modal
   const handleOpen = (product) => {
     setSelectedProduct(product);
@@ -332,10 +337,7 @@ const Tuotteet = () => {
               ))}
             </Select>
           </FormControl>
-
         </div>
-
-
         <div className="grid-bg">
 
   {loading ? (
