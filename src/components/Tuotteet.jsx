@@ -31,7 +31,7 @@ const Tuotteet = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  
+
   //modal
   const handleOpen = (product) => {
     setSelectedProduct(product);
@@ -158,7 +158,7 @@ const Tuotteet = () => {
         // tarkista onko asiakas jo olemassa
         // (jos on, kutsu extractIdFromUrl() ja palauta asiakasid)
         if (existingCustomer) {
-          alert('Tilaus tehty onnistuneesti!');
+          alert('Tilaus on tehty onnistuneesti! Saat vahvistuksen sähköpostiisi. Lisäksi ilmoitamme sinulle erikseen, kun tilauksesi on noudettavissa myymälästämme.');
           const asiakasid = extractIdFromUrl(existingCustomer._links.self.href);
           return asiakasid;
         }
