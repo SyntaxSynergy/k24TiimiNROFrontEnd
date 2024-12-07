@@ -136,7 +136,7 @@ const Tuotteet = () => {
   const handleTilaaSubmit = () => {
     // jos tuote on loppu, näytetään alert 'Product is out of stock' ja tilausta ei tehdä
     if (selectedProduct.varastomaara <= 0) {
-      alert('Product is out of stock');
+      alert('Pahoittelut,Tämä tuote on loppunut varastosta.');
       return;
     }
 
@@ -158,7 +158,7 @@ const Tuotteet = () => {
         // tarkista onko asiakas jo olemassa
         // (jos on, kutsu extractIdFromUrl() ja palauta asiakasid)
         if (existingCustomer) {
-          alert('Tilaus on tehty onnistuneesti! Saat vahvistuksen sähköpostiisi. Lisäksi ilmoitamme sinulle erikseen, kun tilauksesi on noudettavissa myymälästämme.');
+          alert('Asiakas löytyi, tilausta käsitellään');
           const asiakasid = extractIdFromUrl(existingCustomer._links.self.href);
           return asiakasid;
         }
