@@ -19,7 +19,7 @@ function AsiakasProfiili() {
       </div>
       <hr className="divider" />
       <div className="content-section">
-        <h2 className="subtitle">Haluatko poistaa tilisi?</h2>
+        <h2 className="subtitle">Haluatko poistaa tietosi?</h2>
         <p className="description">
           Ota yhteyttä asiakaspalveluumme. Me autamme mielellämme!
         </p>
