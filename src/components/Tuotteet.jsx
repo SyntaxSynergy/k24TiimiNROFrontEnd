@@ -1,5 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button, TextField } from '@mui/material';
+import { FormControl, InputLabel, Select, MenuItem, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button, TextField } from '@mui/material';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import Typography from '@mui/material/Typography';
+import { Spin } from 'antd';
+
+const tyyppiIcons = {
+  VAATE: 'checkroom',
+  LELU: 'sports_volleyball',
+  RUOKA: 'pet_supplies',
+};
+const tyyppiColors = {
+  VAATE: '#87BB8C',  // vihreä
+  LELU: 'rgba(89, 152, 183, 0.839)',  //sininen
+  RUOKA: '#DE99A1',   // pinkki
+};
 
 const Tuotteet = () => {
   const [tuotteet, setTuotteet] = useState([]);
@@ -8,6 +23,16 @@ const Tuotteet = () => {
   const [valittuValmistaja, setValittuValmistaja] = useState('');
   const [showPopup, setShowPopup] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(true); 
+
+
+  //modal
+  const handleOpen = (product) => {
+    setSelectedProduct(product);
+    setOpen(true);
+  };
+  const handleClose = () => setOpen(false);
 
   // alusta asiakastiedot
   const [customerInfo, setCustomerInfo] = useState({
@@ -36,18 +61,24 @@ const Tuotteet = () => {
         const haetutTuotteet = data._embedded.tuotes;
 
         // Haetaan jokaisen tuotteen valmistaja (valmistaja)
-        const tuotteetValmistajilla = haetutTuotteet.map((tuote) => {
-          return fetch(tuote._links.valmistaja.href)
-            .then(handleFetchError)
-            .then((valmistajaData) => ({
-              ...tuote,
-              valmistaja: valmistajaData.valmistajaNimi,  // Poimitaan 'valmistajaNimi'
-            }))
+        const tuotteetValmistajilla = haetutTuotteet.map((tuote) =>
+          fetch(tuote._links.valmistaja.href)
+            .then((response) => response.json())
+            .then((valmistajaData) => {
+              return fetch(tuote._links.tyyppi.href)
+                .then((response) => response.json())
+                .then((tyyppiData) => ({
+                  ...tuote,
+                  valmistaja: valmistajaData.valmistajaNimi || 'Tuntematon valmistaja',
+                  tyyppiNimi: tyyppiData.tyyppiNimi || 'UNKNOWN',
+                }));
+            })
             .catch(() => ({
               ...tuote,
-              valmistaja: 'Tuntematon valmistaja',  // Oletusarvo virheen sattuessa
-            }));
-        });
+              valmistaja: 'Tuntematon valmistaja',
+              tyyppiNimi: 'UNKNOWN',
+            }))
+        );
 
         // Kun kaikki valmistajatiedot on haettu, päivitetään tila
         Promise.all(tuotteetValmistajilla)
@@ -60,10 +91,12 @@ const Tuotteet = () => {
               ...new Set(tuotteetValmistajillaData.map((tuote) => tuote.valmistaja)),
             ];
             setValmistajat(uniikitValmistajat);
+            setLoading(false); 
           });
       })
       .catch((error) => {
         console.error('There was a problem with the fetch operation:', error);
+        setLoading(false); 
       });
   }, []);
 
@@ -186,18 +219,24 @@ const Tuotteet = () => {
             const haetutTuotteet = data._embedded.tuotes;
 
             // Haetaan jokaisen tuotteen valmistaja (valmistaja)
-            const tuotteetValmistajilla = haetutTuotteet.map((tuote) => {
-              return fetch(tuote._links.valmistaja.href)
-                .then(handleFetchError)
-                .then((valmistajaData) => ({
-                  ...tuote,
-                  valmistaja: valmistajaData.valmistajaNimi,  // Poimitaan 'valmistajaNimi'
-                }))
+            const tuotteetValmistajilla = haetutTuotteet.map((tuote) =>
+              fetch(tuote._links.valmistaja.href)
+                .then((response) => response.json())
+                .then((valmistajaData) => {
+                  return fetch(tuote._links.tyyppi.href)
+                    .then((response) => response.json())
+                    .then((tyyppiData) => ({
+                      ...tuote,
+                      valmistaja: valmistajaData.valmistajaNimi || 'Tuntematon valmistaja',
+                      tyyppiNimi: tyyppiData.tyyppiNimi || 'UNKNOWN',
+                    }));
+                })
                 .catch(() => ({
                   ...tuote,
-                  valmistaja: 'Tuntematon valmistaja',  // Oletusarvo virheen sattuessa
-                }));
-            });
+                  valmistaja: 'Tuntematon valmistaja',
+                  tyyppiNimi: 'UNKNOWN',
+                }))
+            );
 
             // Kun kaikki valmistajatiedot on haettu, päivitetään tila
             Promise.all(tuotteetValmistajilla)
@@ -227,130 +266,238 @@ const Tuotteet = () => {
     setSelectedProduct(tuote);
     setShowPopup(true);
   };
-
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    bgcolor: 'background.paper',
+    borderRadius: '10px',
+    boxShadow: 24,
+    p: 4,
+  };
   return (
-    <div>
-      <h1>Tuotteet</h1>
+    <div className="bg">
+      
+      <div className="catalog-container">
+        <div className='tuotteet-header'>
+          <h1 className='h1-heading'>Tuotteet <span class="material-symbols-outlined tassu">
+            pets
+          </span></h1>
 
-      <div>
-        <label>Valitse valmistaja: </label>
-        <select value={valittuValmistaja} onChange={handleValmistajaMuutos}>
-          <option value="">Kaikki valmistajat</option>
-          {valmistajat.map((valmistaja, index) => (
-            <option key={index} value={valmistaja}>
-              {valmistaja}
-            </option>
-          ))}
-        </select>
-      </div>
+          <FormControl
+            sx={{
+              width: '30vw',
+              borderRadius: '8px',
+              '& .MuiInputLabel-root': { color: 'white' },
+              '& .MuiOutlinedInput-root': {
 
-      <div>
-        {tuotteet.length === 0 ? (
-          <p>Ei tuotteita löytynyt.</p>
-        ) : (
-          tuotteet.map((tuote) => (
-            <div key={tuote._links.self.href}>
-              <h3>{tuote.nimi}</h3>
-              <p>Väri: {tuote.vari}</p>
-              <p>Hinta: {tuote.hinta} €</p>
-              <p>Varastomäärä: {tuote.varastomaara}</p>
-              <p>Koko: {tuote.koko || 'Ei kokoa'}</p>
-              <p>Valmistaja: {tuote.valmistaja}</p>
-              <button onClick={() => handleTilaaClick(tuote)}>Tilaa</button>
+                '& fieldset': {
+                  borderColor: 'white',
+                },
+                '&:hover fieldset': {
+                  borderColor: 'white',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: 'white',
+                },
+              },
+              '& .MuiMenuItem-root': {
+                '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.2)', color: 'white' },
+              },
+
+              '@media (max-width: 700px)': {
+                width: '50vw',
+              },
+            }}
+
+          >
+            <InputLabel id="valmistaja-select-label">Valitse valmistaja</InputLabel>
+            <Select
+              labelId="valmistaja-select-label"
+              id="valmistaja-select"
+              value={valittuValmistaja}
+              onChange={handleValmistajaMuutos}
+              label="Valitse valmistaja"
+            >
+
+              <MenuItem value="">
+                <em>Kaikki valmistajat</em>
+              </MenuItem>
+
+              {valmistajat.map((valmistaja, index) => (
+                <MenuItem key={index} value={valmistaja}>
+                  {valmistaja}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+
+        </div>
+
+
+        <div className="grid-bg">
+
+  {loading ? (
+    <div className="loading">
+      <Spin size="large" />
+    </div>
+  ) : (
+    <div className="products-grid">
+      {tuotteet.length === 0 ? (
+        <p>Ei tuotteita löytynyt.</p>
+      ) : (
+        tuotteet.map((tuote) => (
+                
+                <div className="product-card" key={tuote._links.self.href}>
+                  <div className="icon-container">
+                    <span
+                      className="material-symbols-outlined product-icon"
+                      style={{ fontSize: '5rem', color: tyyppiColors[tuote.tyyppiNimi] || '#555' }}>
+                      {tyyppiIcons[tuote.tyyppiNimi] || 'help_outline'}
+                    </span>
+                  </div>
+
+                  <div className="product-info">
+                    <div className='product-header'> <p>{tuote.nimi}</p>
+                      <Button className="info-button" onClick={() => handleOpen(tuote)}>
+                        <span className="material-symbols-outlined info">info</span>
+                      </Button>
+                    </div>
+
+                    <hr className='tuote-divider-hr' />
+
+                    <div className="google-shopping-banner">
+                      <p className='hinta'> {tuote.hinta} €</p>
+                      <div className='hinta-osta' onClick={() => handleTilaaClick(tuote)}>
+                        <span className="material-symbols-outlined shopping" >shopping_cart</span>
+                        <p className='ostaTuote'>Osta tuote</p>
+                        </div>
+              </div>
             </div>
-          ))
-        )}
-      </div>
+          </div>
+        ))
+      )}
+    </div>
+  )}
+</div>
 
-      <Dialog open={showPopup} onClose={() => setShowPopup(false)}>
-        <DialogTitle>Tilaa tuote</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Täytä alla olevat tiedot tilataksesi tuotteen.
-          </DialogContentText>
-          <TextField
-            autoFocus
-            required
-            margin="dense"
-            name="sukunimi"
-            label="Sukunimi"
-            type="text"
-            fullWidth
-            value={customerInfo.sukunimi}
-            onChange={handleInputChange}
-          />
-          <TextField
-            required
-            margin="dense"
-            name="etunimi"
-            label="Etunimi"
-            type="text"
-            fullWidth
-            value={customerInfo.etunimi}
-            onChange={handleInputChange}
-          />
-          <TextField
-            required
-            margin="dense"
-            name="puhelinnumero"
-            label="Puhelinnumero"
-            type="text"
-            fullWidth
-            value={customerInfo.puhelinnumero}
-            onChange={handleInputChange}
-          />
-          <TextField
-            required
-            margin="dense"
-            name="sahkoposti"
-            label="Sähköposti"
-            type="text"
-            fullWidth
-            value={customerInfo.sahkoposti}
-            onChange={handleInputChange}
-          />
-          <TextField
-            required
-            margin="dense"
-            name="katuosoite"
-            label="Katuosoite"
-            type="text"
-            fullWidth
-            value={customerInfo.katuosoite}
-            onChange={handleInputChange}
-          />
-          <TextField
-            required
-            margin="dense"
-            name="postinumero"
-            label="Postinumero"
-            type="text"
-            fullWidth
-            value={customerInfo.postinumero}
-            onChange={handleInputChange}
-          />
-          <TextField
-            required
-            margin="dense"
-            name="postitoimipaikka"
-            label="Postitoimipaikka"
-            type="text"
-            fullWidth
-            value={customerInfo.postitoimipaikka}
-            onChange={handleInputChange}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setShowPopup(false)} color="primary">
-            Peruuta
-          </Button>
-          <Button onClick={handleTilaaSubmit} color="primary">
-            Tilaa
-          </Button>
-        </DialogActions>
-      </Dialog>
+        <Dialog open={showPopup} onClose={() => setShowPopup(false)}>
+          <DialogTitle>Tilaa tuote</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Täytä alla olevat tiedot tilataksesi tuotteen.
+            </DialogContentText>
+            <TextField
+              autoFocus
+              required
+              margin="dense"
+              name="sukunimi"
+              label="Sukunimi"
+              type="text"
+              fullWidth
+              value={customerInfo.sukunimi}
+              onChange={handleInputChange}
+            />
+            <TextField
+              required
+              margin="dense"
+              name="etunimi"
+              label="Etunimi"
+              type="text"
+              fullWidth
+              value={customerInfo.etunimi}
+              onChange={handleInputChange}
+            />
+            <TextField
+              required
+              margin="dense"
+              name="puhelinnumero"
+              label="Puhelinnumero"
+              type="text"
+              fullWidth
+              value={customerInfo.puhelinnumero}
+              onChange={handleInputChange}
+            />
+            <TextField
+              required
+              margin="dense"
+              name="sahkoposti"
+              label="Sähköposti"
+              type="text"
+              fullWidth
+              value={customerInfo.sahkoposti}
+              onChange={handleInputChange}
+            />
+            <TextField
+              required
+              margin="dense"
+              name="katuosoite"
+              label="Katuosoite"
+              type="text"
+              fullWidth
+              value={customerInfo.katuosoite}
+              onChange={handleInputChange}
+            />
+            <TextField
+              required
+              margin="dense"
+              name="postinumero"
+              label="Postinumero"
+              type="text"
+              fullWidth
+              value={customerInfo.postinumero}
+              onChange={handleInputChange}
+            />
+            <TextField
+              required
+              margin="dense"
+              name="postitoimipaikka"
+              label="Postitoimipaikka"
+              type="text"
+              fullWidth
+              value={customerInfo.postitoimipaikka}
+              onChange={handleInputChange}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => setShowPopup(false)} color="primary">
+              Peruuta
+            </Button>
+            <Button onClick={handleTilaaSubmit} color="primary">
+              Tilaa
+            </Button>
+          </DialogActions>
+        </Dialog>
+
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <Typography id="modal-modal-title" variant="h7" component="h2">
+              {selectedProduct ? selectedProduct.nimi : 'Loading...'}
+            </Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              {selectedProduct ? (
+                <>
+                  <p>Väri: {selectedProduct.vari}</p>
+                  <p>Varastomäärä: {selectedProduct.varastomaara}</p>
+                  <p>Koko: {selectedProduct.koko || 'N/A'}</p>
+                  <p>Valmistaja: {selectedProduct.valmistaja}</p>
+                </>
+              ) : (
+                <p>Loading...</p>
+              )}
+            </Typography>
+          </Box>
+        </Modal>
+      </div>
     </div>
   );
 };
+
 
 export default Tuotteet;

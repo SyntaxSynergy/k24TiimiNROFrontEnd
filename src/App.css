@@ -1,55 +1,671 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100vh;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-family: 'Inter', Arial, sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  background-color: rgb(96, 161, 199);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+main {
+  flex: 1;
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.h1-heading {
+  font-weight: 800;
+  color: #ffffff;
+  margin-top: 9vh;
+  margin: 0;
 }
 
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* NAVBAR */
+
+.navbar.custom-navbar {
+  background-color: rgb(96, 161, 199) !important;
+  box-shadow: 0 2px 10px rgba(55, 85, 137, 0.3);
+  padding: 1.4vh;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+.navLogo {
+  max-width: 13rem;
+  padding-right: 10px;
+  padding-left: 8px;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.nav-link.text {
+  color: aliceblue;
+  font-weight: 500;
+  max-height: 40px;
+  transition: color 0.3s ease, transform 0.3s ease;
+
 }
 
-.card {
-  padding: 2em;
+.material-symbols-outlined.user {
+  color: aliceblue;
 }
 
-.read-the-docs {
-  color: #888;
+.navbar .nav-link:hover {
+  color: #1e5777;
 }
 
-a {
-  margin: 20px;
+/* ETUSIVU */
+.carousel {
+  box-shadow: 0 4px 8px rgba(89, 152, 183, 0.839);
 }
 
-nav {
+.etusivu-container {
   display: flex;
   justify-content: center;
-  background-color: rgb(46, 46, 46);
+  align-items: center;
+  flex-direction: column;
+  margin-left: 16vw;
+  margin-right: 16vw;
+  margin-top: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+
+}
+
+.etusivu-h1 {
+  color: rgb(255, 255, 255);
+  font-weight: 800;
+}
+
+.etusivu-p {
+  color: rgb(255, 255, 255);
+  font-size: 1.3em;
+}
+
+.material-symbols-outlined.tassu-etusivu {
+  color: rgb(255, 255, 255);
+  font-size: 4rem;
+}
+
+.tuotteet-button {
+  display: inline-block;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(53, 139, 182, 0.839);
+  color: rgb(63, 151, 196);
+  border-radius: 1rem;
+  padding: 12px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 800;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.tuotteet-button:hover {
+  background-color: rgb(41, 117, 155);
+  color: white;
+  transform: scale(1.05);
+}
+
+
+/* MEISTA*/
+.meista-container {
+  margin-top: 8vh;
+
+}
+.meista-container-bg {
+  font-family: 'Arial', sans-serif;
+  max-width: 800px;
+  margin: 2rem auto;
+  background-color: #fff;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  line-height: 1.6;
+  color: #333;
+
+}
+
+
+.meista-heading2 {
+  text-align: left;
+  font-weight: bold;
+  color: rgb(63, 151, 196);
+}
+
+.heading-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+
+}
+
+.intro-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1vh;
+  margin: 3rem 3rem 0 3rem;
+}
+
+.koira-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+
+}
+
+.intro-text p {
+  font-size: 1.2rem;
+  color: #555;
+  text-align: left;
+}
+
+.about-content {
+  margin-bottom: 2rem;
+  margin: 3rem;
+}
+
+.about-content p {
+
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.contact-section {
+  background-color: #dee9ed;
+  padding: 1.5rem;
+  border-radius: 30px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact-section h3 {
+  font-size: 1.4rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.contact-section p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.email-link {
+  color: #0077cc;
+  text-decoration: none;
+}
+
+.email-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .intro-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .koira-image {
+    margin-bottom: 1rem;
+  }
+}
+
+
+/* TUOTTEET */
+.bg {
+  background-image: url('./assets/kuvat/taustakuva.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.tuotteet-header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+}
+
+.material-symbols-outlined.tassu {
+  font-size: 1em;
+}
+
+.catalog-container {
+  display: flex;
+  margin-top: 9vh;
+  margin-left: 20rem;
+  margin-right: 20rem;
+  margin-bottom: 5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.grid-bg {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 7vh;
+  padding-top: 2vh;
+  margin-top: 6vh;
+  box-shadow: 0 2px 30px rgba(57, 136, 220, 0.698);
+}
+
+.loading {
+  margin-top: 4vh;
+  margin: 10em;
+
+}
+
+.error {
+  color: red;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.product-card {
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 1rem 1rem 1rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-icon {
+  margin-bottom: 1rem;
+}
+.icon-container {
+  background-color: #d9edf5;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 5.5rem;
+}
+
+.hinta {
+  font-weight: bold;
+  text-align: center;
+  margin: 0
+}
+
+hr.tuote-divider-hr {
+  color: rgb(167, 167, 167);
+  margin: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.hinta-osta {
+  display: flex;
+  align-items: center;
+  background-color: rgb(96, 161, 199);
+  color: white;
+  padding: 8px 10px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hinta-osta:hover {
+  background-color: rgb(38, 108, 148);
+  transform: scale(1.05);
+}
+
+.hinta-osta span.material-symbols-outlined {
+  margin-right: 8px;
+  font-size: 1.5rem;
+}
+
+.info-button span.material-symbols-outlined {
+  font-size: 1.5rem;
+}
+
+
+
+
+.info-button:hover {
+  animation: infoButtonHover 0.5s ease-out;
+}
+
+
+.google-shopping-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  font-size: 1rem;
+
+}
+
+.hinta-osta {
+  gap: 4px;
+  display: flex;
+  flex-direction: row;
+}
+
+.material-symbols-outlined.info {
+  color: #444;
+}
+
+.material-symbols-outlined.shopping {
+  color: #ffffff;
+  font-size: 1.4rem;
+
+}
+
+.google-shopping-banner.ostaTuote {
+  margin: 0;
+  color: #963939;
+
+}
+
+.hinta-osta p {
+  margin: 0;
+  color: #ffffff;
+
+}
+
+.google-shopping-banner.ostaTuote {
+  color: white;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.product-header p {
+  margin-left: 10px;
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgb(66, 66, 66);
+}
+
+/*ASIAKASPROFIILI*/
+.asiakasprofiili-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.asiakasprofiili-container-bg {
+  font-family: 'Arial', sans-serif;
+  margin: 2rem ;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 4rem;
+  text-align: center;
+}
+
+.header-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-image {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: contain;
+  padding: 10px;
+  margin-bottom: 1rem;
+
+  background-color: rgb(63, 151, 196);
+}
+
+.title {
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.divider {
+  margin: 1.5rem 0;
+  border: none;
+  border-top: 2px solid #ddd;
+}
+
+.content-section {
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: #444;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.description {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.email-link {
+  font-size: 1.1rem;
+  color: #0077cc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.email-link:hover {
+  text-decoration: underline;
+}
+
+
+
+/*FOOTER*/
+.footer {
+  background-color: rgb(239, 239, 239);
+  box-shadow: 0 10px 30px rgb(43, 63, 98);
+  padding: 6px 0;
+  width: 100%;
+  text-align: center;
+  z-index: 100;
+  position: relative;
+  bottom: 0;
+
+}
+
+.footer-text {
+  color: rgb(70, 127, 160);
+  margin: 0;
+}
+
+.footer-link {
+  color: #333;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+
+
+
+/* MOBILE*/
+
+@media (max-width: 1164px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+
+}
+
+@media (max-width: 768px) {
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4vh;
+    margin: 0;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+
+  }
+
+  .catalog-container {
+    margin-left: 6rem;
+    margin-right: 6rem;
+    margin-bottom: 5rem;
+    padding: 0 1rem;
+    margin-top: 0;
+  }
+
+  .h1-heading {
+    font-weight: 800;
+    color: #ffffff;
+    margin-top: 2vh;
+    margin: 0;
+
+  }
+
+  .grid-bg {
+    background-color: #ffffff;
+    border-radius: 1rem;
+    padding: 2vh;
+    margin: 20rem;
+    padding-top: 2vh;
+    margin-top: 6vh;
+
+
+  }
+
+  .asiakasprofiili-container {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    margin: 4vh;
+    margin-top: 15vh;
+
+  }
+  .asiakasprofiili-container-bg {
+    padding:2rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin-left: 7rem ;
+    margin-right: 7rem ;
+ 
+  }
+
+  .tuotteet-header {
+    margin-top: 7vh;
+    flex-direction: column;
+    gap: 30px;
+    padding: 0;
+    margin-bottom: 0;
+    width: 0;
+
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 0;
+  }
+
+  .etusivu-container {
+
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+
+  }
+
+  .etusivu-p {
+    font-size: 1.3em;
+  }
+
+  .meista-container {
+
+    margin-top: 4vh;
+
+  }
+
+  .intro-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 1vh;
+    margin: 1rem 1rem 0 1rem;
+  }
+
+  .intro-text p {
+    font-size: 1.2rem;
+    color: #555;
+    text-align: center;
+  }
+
+  .meista-heading2 {
+    margin-top: 4vw;
+    margin-bottom: 4vw;
+    text-align: center;
+  }
+
+  .meista-container-bg {
+    font-family: 'Arial', sans-serif;
+    max-width: 800px;
+    margin: 1rem;
+    background-color: #fff;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    line-height: 1.6;
+    color: #333;
+
+  }
+
+  .about-content {
+    margin-bottom: 2rem;
+    margin: 0.5rem;
+  }
+
 }

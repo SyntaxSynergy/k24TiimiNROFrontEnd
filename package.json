@@ -16,9 +16,12 @@
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
     "@mui/material": "^6.1.9",
+    "antd": "^5.22.3",
     "bcryptjs": "^2.4.3",
+    "bootstrap": "^5.3.3",
     "dotenv": "^16.4.5",
     "react": "^18.3.1",
+    "react-bootstrap": "^2.10.6",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.28.0",
     "varasto": "file:"

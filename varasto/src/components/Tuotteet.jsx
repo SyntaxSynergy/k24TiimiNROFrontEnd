@@ -213,7 +213,7 @@ const Tuotteet = () => {
                   <hr className='tuote-divider-hr' />
                   <div className="google-shopping-banner">
                     <p className='hinta'> {tuote.hinta} €</p>
-                    <div className='hinta-osta'>
+                    <div className='hinta-osta' >
                       <span className="material-symbols-outlined shopping" >
                         shopping_cart
                       </span>
@@ -228,7 +228,93 @@ const Tuotteet = () => {
         </div>
       </div>
 
-
+      <Dialog open={showPopup} onClose={() => setShowPopup(false)}>
+        <DialogTitle>Tilaa tuote</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Täytä alla olevat tiedot tilataksesi tuotteen.
+          </DialogContentText>
+          <TextField
+            autoFocus
+            required
+            margin="dense"
+            name="sukunimi"
+            label="Sukunimi"
+            type="text"
+            fullWidth
+            value={customerInfo.sukunimi}
+            onChange={handleInputChange}
+          />
+          <TextField
+            required
+            margin="dense"
+            name="etunimi"
+            label="Etunimi"
+            type="text"
+            fullWidth
+            value={customerInfo.etunimi}
+            onChange={handleInputChange}
+          />
+          <TextField
+            required
+            margin="dense"
+            name="puhelinnumero"
+            label="Puhelinnumero"
+            type="text"
+            fullWidth
+            value={customerInfo.puhelinnumero}
+            onChange={handleInputChange}
+          />
+          <TextField
+            required
+            margin="dense"
+            name="sahkoposti"
+            label="Sähköposti"
+            type="text"
+            fullWidth
+            value={customerInfo.sahkoposti}
+            onChange={handleInputChange}
+          />
+          <TextField
+            required
+            margin="dense"
+            name="katuosoite"
+            label="Katuosoite"
+            type="text"
+            fullWidth
+            value={customerInfo.katuosoite}
+            onChange={handleInputChange}
+          />
+          <TextField
+            required
+            margin="dense"
+            name="postinumero"
+            label="Postinumero"
+            type="text"
+            fullWidth
+            value={customerInfo.postinumero}
+            onChange={handleInputChange}
+          />
+          <TextField
+            required
+            margin="dense"
+            name="postitoimipaikka"
+            label="Postitoimipaikka"
+            type="text"
+            fullWidth
+            value={customerInfo.postitoimipaikka}
+            onChange={handleInputChange}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setShowPopup(false)} color="primary">
+            Peruuta
+          </Button>
+          <Button onClick={handleTilaaSubmit} color="primary">
+            Tilaa
+          </Button>
+        </DialogActions>
+      </Dialog>
 
       <Modal
         open={open}
