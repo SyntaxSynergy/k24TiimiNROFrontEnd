@@ -214,7 +214,7 @@ const Tuotteet = () => {
       // ilmoitus onnistuneesta tilauksesta ja tilaus ikkunan sulkeminen
       .then(data => {
         console.log('Order created successfully:', data);
-        alert('Order created successfully!');
+        alert('Tilaus on tehty onnistuneesti! Saat vahvistuksen sähköpostiisi. Lisäksi ilmoitamme sinulle erikseen, kun tilauksesi on noudettavissa myymälästämme.');
         setShowPopup(false);
 
         // fetchaa uusi tuotelista päivitettyjen varastomäärien kanssa tilauksen tekemisen jälkeen
