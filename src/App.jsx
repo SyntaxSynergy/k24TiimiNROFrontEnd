@@ -12,7 +12,7 @@ function App() {
     <Router basename="/k24TiimiNROFrontEnd">
 
 
-
+      {/* Nav bar*/}
       <nav className="navbar navbar-expand-lg navbar-light bg-body-tertiary sticky-top custom-navbar" >
         <div className="container-fluid">
           <Link className="nav-link active" aria-current="page" to="/"><img className="navLogo" src={Logo} alt="" /></Link>
@@ -57,6 +57,7 @@ function App() {
         <Route path="etusivu" element={<Etusivu />} />
       </Routes>
 
+       {/* footer*/}
       <footer className="footer">
         <p className='footer-text'>Omppu & Rane oy 2024</p>
       </footer>

@@ -5,12 +5,12 @@ import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
 import { Spin } from 'antd';
 
-const tyyppiIcons = {
+const tyyppiIcons = { //TuoteTyyppien ikonit 
   VAATE: 'checkroom',
   LELU: 'sports_volleyball',
   RUOKA: 'pet_supplies',
 };
-const tyyppiColors = {
+const tyyppiColors = { //TuoteTyyppien ikonejen värit
   VAATE: '#87BB8C',  // vihreä
   LELU: 'rgba(89, 152, 183, 0.839)',  //sininen
   RUOKA: '#DE99A1',   // pinkki
@@ -290,6 +290,7 @@ const Tuotteet = () => {
             pets
           </span></h1>
 
+        {/* Valitse valmistaja*/}
           <FormControl
             sx={{
               width: '30vw',
@@ -345,7 +346,7 @@ const Tuotteet = () => {
       <Spin size="large" />
     </div>
   ) : (
-    <div className="products-grid">
+    <div className="products-grid"> {/* Tuotteet*/}
       {tuotteet.length === 0 ? (
         <p>Ei tuotteita löytynyt.</p>
       ) : (
@@ -384,6 +385,7 @@ const Tuotteet = () => {
   )}
 </div>
 
+  {/* Asiakastilaus moduuli*/}
         <Dialog open={showPopup} onClose={() => setShowPopup(false)}>
           <DialogTitle>Tilaa tuote</DialogTitle>
           <DialogContent>
@@ -472,6 +474,7 @@ const Tuotteet = () => {
           </DialogActions>
         </Dialog>
 
+{/* Tuotetietojen moduuli*/}
         <Modal
           open={open}
           onClose={handleClose}

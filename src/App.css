@@ -141,7 +141,6 @@ main {
 
 }
 
-
 .meista-heading2 {
   text-align: left;
   font-weight: bold;
@@ -354,12 +353,9 @@ hr.tuote-divider-hr {
 }
 
 
-
-
 .info-button:hover {
   animation: infoButtonHover 0.5s ease-out;
 }
-
 
 .google-shopping-banner {
   display: flex;

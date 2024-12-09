@@ -11,10 +11,10 @@ import ExampleCarouselImageMobile2 from '../assets/kuvat/etusivu-pic-2-mobiili.j
 import ExampleCarouselImageMobile3 from '../assets/kuvat/etusivu-pic-3-mobiili.jpg';
 
 function Etusivu() {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false); // kuvan muutaja state
 
 
-  useEffect(() => {
+  useEffect(() => { 
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 767);
     };
@@ -31,7 +31,7 @@ function Etusivu() {
         <Carousel.Item interval={5000}>
           <img
             className="d-block w-100"
-            src={isMobile ? ExampleCarouselImageMobile1 : ExampleCarouselImage1}
+            src={isMobile ? ExampleCarouselImageMobile1 : ExampleCarouselImage1} // Muuttaa mobiili version kuvaan
             alt="First slide"
           />
 
@@ -40,7 +40,7 @@ function Etusivu() {
         <Carousel.Item interval={5000}>
           <img
             className="d-block w-100"
-            src={isMobile ? ExampleCarouselImageMobile2 : ExampleCarouselImage2}
+            src={isMobile ? ExampleCarouselImageMobile2 : ExampleCarouselImage2} // Muuttaa mobiili version kuvaan
             alt="Second slide"
           />
 
