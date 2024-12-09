@@ -1,12 +1,61 @@
-<<<<<<< HEAD
-Github pages: https://syntaxsynergy.github.io/k24TiimiNROFrontEnd/
-=======
-# React + Vite
+# 🐾 Omppu & Rane - Lemmikkitarvikeverkkokauppa
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Tervetuloa Omppu & Rane -verkkokaupan GitHub-repositorioon! Tämä projekti on lemmikkitarvikeverkkokauppa, joka tarjoaa korkealaatuisia tuotteita lemmikeille ja heidän omistajilleen.
 
-Currently, two official plugins are available:
+## 🚀 Toiminnot
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
->>>>>>> 8a377bf14fb749c308a1379462764ee29d51f5d1
+- **Etusivu**: Esittely verkkokaupan tarjonnasta ja uusimmista tuotteista.
+- **Tuotteet**: Laaja valikoima lemmikkitarvikkeita, kuten vaatteita, leluja ja ruokaa.
+- **Meistä**: Tietoa verkkokaupan taustasta ja yhteystiedot.
+- **Asiakasprofiili**: Asiakastietojen hallinta ja yhteydenotto asiakaspalveluun.
+
+## 📋 Vaatimukset
+
+- **Node.js**: Vähintään versio 14.0.0
+- **npm**: Vähintään versio 6.0.0
+
+Varmista, että nämä ohjelmistot on asennettu ja päivitetty ennen projektin asennusta ja käynnistämistä.
+
+## 📦 Asennusohjeet
+
+1. Kloonaa repositorio:
+    ```sh
+    git clone https://github.com/SyntaxSynergy/k24TiimiNROFrontEnd.git
+    ```
+2. Siirry projektin hakemistoon:
+    ```sh
+    cd k24TiimiNROFrontEnd
+    ```
+3. Asenna riippuvuudet:
+    ```sh
+    npm install
+    ```
+4. Käynnistä kehityspalvelin:
+    ```sh
+    npm run dev
+    ```
+
+## 📝 Käyttöohjeet
+
+- Navigoi selaimella osoitteeseen `http://localhost:5173/k24TiimiNROFrontEnd/` nähdäksesi sovelluksen paikallisesti.
+
+## 🛠️ Käytetyt teknologiat
+
+- **React**: Käyttöliittymän rakentamiseen.
+- **Vite**: Nopeaan kehitysympäristöön.
+- **React Router**: Reititykseen.
+- **Bootstrap**: Tyylittelyyn ja responsiivisuuteen.
+- **dotenv**: Ympäristömuuttujien hallintaan.
+- **@emotion/react**: CSS-in-JS ratkaisu.
+- **@emotion/styled**: Tyylittelyyn.
+- **@mui/material**: Materiaalikomponentit.
+- **antd**: Ant Design komponentit.
+- **react-bootstrap**: Bootstrap komponentit Reactille.
+- **eslint**: Koodin laadun varmistamiseen.
+- **@vitejs/plugin-react**: React plugin Viteen.
+
+## 👥 Tekijät
+- Mio Kantola - [Maajoo](https://github.com/Maajoo)
+- Sophia Dunkley  - [SophiaDun](https://github.com/SophiaDun)
+- Ossi Saurio - [Iso-S](https://github.com/Iso-S)
+- Heta Heikkilä - [hetaheikkila](https://github.com/hetaheikkila)
